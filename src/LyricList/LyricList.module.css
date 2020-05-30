@@ -1,0 +1,16 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+    /* background-color: yellow; */
+    padding: 30px;
+    margin-top: 20px;
+}
+
+.Item {
+    background-color: #f8f7f7;
+    margin-bottom: 20px;
+    padding-bottom: 30px;
+    -webkit-box-shadow: 18px 18px 30px -17px rgba(51, 51, 51, 0.18);
+    -moz-box-shadow: 18px 18px 30px -17px rgba(51, 51, 51, 0.18);
+    box-shadow: 18px 18px 30px -17px rgba(51, 51, 51, 0.18);
+}
