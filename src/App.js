@@ -1,20 +1,38 @@
 import React from 'react';
 import './App.css';
-import Nav from './Nav/Nav';
-import Lyrics from './Lyrics/Lyrics';
-import SearchInput from './SearchInput/SearchInput';
+// import Nav from './Nav/Nav';
+import {LyricContextProvider} from './Context/Context';
+import {Switch, Route} from 'react-router-dom';
+// import LyricList from './LyricList/LyricList';
+import LyricDetail from './LyricDetail/LyricDetail';
+import Main from './Main/Main';
+// import SearchInput from './SearchInput/SearchInput';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowRight);
 
+// const App = () => {
+//   return (
+//     <LyricContextProvider>
+//       <div className="App">
+//         <Nav />
+//         <SearchInput />
+//         <LyricList />
+//       </div>
+//     </LyricContextProvider>
+//   );
+// }
+
 const App = () => {
   return (
-    <div className="App">
-      <Nav />
-      <SearchInput />
-      <Lyrics />
-    </div>
+    <LyricContextProvider>
+      <Switch>
+        <Route path='/:id' component={LyricDetail}/>
+        <Route path='/' component={Main}/>
+      </Switch>
+    </LyricContextProvider>
   );
 }
+
 
 export default App;
