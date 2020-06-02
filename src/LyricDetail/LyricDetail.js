@@ -6,13 +6,11 @@ const LyricDetail = (props) => {
 
     const trackId = props.match.params.id;
     const [lyricDetail, setLyricDetail] = useState({});
-    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        setLoading(true)
         axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.lyrics.get?track_id=${trackId}&apikey=2fb0796550ae4d881460ef2cbd2f61bc`)
             .then(res => {
-                setLyricDetail({lyricDetail:res.data.message.body.lyrics})
+                setLyricDetail(res.data.message.body.lyrics)
             })
             .catch(error => console.log(error))
     }, [trackId])
