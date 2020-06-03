@@ -1,0 +1,16 @@
+.Container {
+    /* background-color: red; */
+    width: 80%;
+    margin: 40px auto auto auto;
+    line-height: 2em
+}
+
+.Container p {
+    font-size: 16px;
+    color: #333333;
+}
+
+.Icon {
+    margin-left: 40px;
+    margin-top: 40px;
+}

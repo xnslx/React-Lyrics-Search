@@ -8,8 +8,8 @@ import LyricDetail from './LyricDetail/LyricDetail';
 import Main from './Main/Main';
 // import SearchInput from './SearchInput/SearchInput';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
-library.add(faArrowRight);
+import {faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowRight, faArrowLeft);
 
 // const App = () => {
 //   return (
