@@ -7,12 +7,12 @@ import LyricDetail from '../LyricDetail/LyricDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LyricList = (props) => {
-    console.log(props)
+    // console.log(props)
     const lyricList = useContext(LyricContext)
     // console.log(lyricList)
     
     const fetchLyricsHandler = (trackId) => {
-        console.log(trackId)
+        // console.log(trackId)
         // axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/apikey=2fb0796550ae4d881460ef2cbd2f61bc&track.lyrics.get?track_id=${trackId}`)
         //     .then(response => {
         //         console.log(response)
