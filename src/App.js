@@ -6,6 +6,7 @@ import {Switch, Route} from 'react-router-dom';
 // import LyricList from './LyricList/LyricList';
 import LyricDetail from './LyricDetail/LyricDetail';
 import Main from './Main/Main';
+import SearchedLyricsDetail from './SearchedLyricsDetail/SearchedLyricsDetail';
 // import SearchInput from './SearchInput/SearchInput';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
@@ -28,6 +29,7 @@ const App = () => {
     <LyricContextProvider>
       <Switch>
         <Route path='/:id' component={LyricDetail}/>
+        <Route path='/songs/:id' component={SearchedLyricsDetail} />
         <Route path='/' component={Main}/>
       </Switch>
     </LyricContextProvider>

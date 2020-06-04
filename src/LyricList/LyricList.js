@@ -10,14 +10,6 @@ const LyricList = (props) => {
     // console.log(props)
     const lyricList = useContext(LyricContext)
     // console.log(lyricList)
-    
-    const fetchLyricsHandler = (trackId) => {
-        // console.log(trackId)
-        // axios.get(`https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/apikey=2fb0796550ae4d881460ef2cbd2f61bc&track.lyrics.get?track_id=${trackId}`)
-        //     .then(response => {
-        //         console.log(response)
-        //     })
-    }
 
     return (
         <>
@@ -28,7 +20,7 @@ const LyricList = (props) => {
                             <h2>{lyric.track.track_name}</h2>
                             <h4>{lyric.track.album_name}</h4>
                             <h5>{lyric.track.artist_name}</h5>
-                            <Link to={'/' + lyric.track.track_id}><button onClick={() =>fetchLyricsHandler(lyric.track.track_id)}>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
+                            <Link to={'/' + lyric.track.track_id}><button>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
                         </div>
                     )
                 })}

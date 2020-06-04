@@ -1,9 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react';
+import {Link, Route, withRouter} from 'react-router-dom';
+import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
 import axios from 'axios';
 
-const SearchInput = () => {
-    
-    const [query, setQuery] = useState('');
+const SearchInput = (props) => {
+    // console.log(props)
+    const [query, setQuery] = useState({});
     const inputRef = useRef()
 
     useEffect(() => {
@@ -25,16 +27,19 @@ const SearchInput = () => {
       }, [query]);
 
     return (
-        <form>
-            <input
-                ref={inputRef}
-                type='text' 
-                placeholder='song title...'
-                onChange={(e) => setQuery(e.target.value)}
-            />
-            <button>Get Track Lyrics</button>
-        </form>
+        <>
+            <form>
+                <input
+                    ref={inputRef}
+                    type='text' 
+                    placeholder='song title...'
+                    onChange={(e) => setQuery(e.target.value)}
+                />
+                <Link to={'/songs/' + query.lyrics_id}><button>Get Track Lyrics</button></Link>
+            </form>
+            <Route path={props.match.url + '/songs/:query.lyrics_id'} component={SearchedLyricsDetail}/>
+        </>
     )
 };
 
-export default SearchInput;
+export default withRouter(SearchInput);
