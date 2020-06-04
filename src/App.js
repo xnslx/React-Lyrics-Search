@@ -29,7 +29,7 @@ const App = () => {
     <LyricContextProvider>
       <Switch>
         <Route path='/:id' component={LyricDetail}/>
-        <Route path='/songs/:id' component={SearchedLyricsDetail} />
+        <Route path='/songs/:id' exact component={SearchedLyricsDetail} />
         <Route path='/' component={Main}/>
       </Switch>
     </LyricContextProvider>

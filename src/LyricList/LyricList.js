@@ -25,7 +25,7 @@ const LyricList = (props) => {
                     )
                 })}
             </div>
-            <Route path={props.match.url + '/:id'} exact component={LyricDetail}/>
+            <Route path={props.match.url + '/:id'} component={LyricDetail}/>
         </>
     )
 };
