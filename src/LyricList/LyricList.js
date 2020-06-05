@@ -17,10 +17,10 @@ const LyricList = (props) => {
                 {lyricList.lyrics.map(lyric => {
                     return (
                         <div key={lyric.track.track_id} className={classes.Item}>
-                            <h2>{lyric.track.track_name}</h2>
-                            <h4>{lyric.track.album_name}</h4>
-                            <h5>{lyric.track.artist_name}</h5>
-                            <Link to={'/lyrics/' + lyric.track.track_id}><button>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
+                            <h2 style={{fontSize:'18px', fontWeight:'300'}}>Track Name: <strong>{lyric.track.track_name}</strong></h2>
+                            <h4 style={{fontSize:'18px', fontWeight:'300'}}>Album Name: <strong>{lyric.track.album_name}</strong></h4>
+                            <h5 style={{fontSize:'18px', fontWeight:'300'}}>Artist: <strong>{lyric.track.artist_name}</strong></h5>
+                            <Link to={'/lyrics/' + lyric.track.track_id}><button className={classes.Button}>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
                         </div>
                     )
                 })}

@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link, Route, withRouter} from 'react-router-dom';
+import classes from './SearchInput.module.css';
 import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
 import axios from 'axios';
 
@@ -33,8 +34,9 @@ const SearchInput = (props) => {
 
     return (
         <>
-            <form>
+            <form className={classes.Form}>
                 <input
+                    className={classes.Input}
                     ref={inputRef}
                     type='text' 
                     placeholder='song title...'
@@ -43,7 +45,7 @@ const SearchInput = (props) => {
                 <Link to={{
                   pathname: '/songs/' + query.lyrics_id,
                   lyrics:query.lyrics_body
-                }}><button>Get Track Lyrics</button></Link>
+                }}><button className={classes.Button}>Get Track Lyrics</button></Link>
                 {/* <button onClick={() => fetchLyricsHandler(query.lyrics_id)}>Get Track Lyrics</button> */}
             </form>
             <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail} />
