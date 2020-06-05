@@ -20,12 +20,12 @@ const LyricList = (props) => {
                             <h2>{lyric.track.track_name}</h2>
                             <h4>{lyric.track.album_name}</h4>
                             <h5>{lyric.track.artist_name}</h5>
-                            <Link to={'/' + lyric.track.track_id}><button>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
+                            <Link to={'/lyrics/' + lyric.track.track_id}><button>View Lyrics<FontAwesomeIcon icon='arrow-right' style={{paddingLeft:'20px'}}/></button></Link>
                         </div>
                     )
                 })}
             </div>
-            <Route path={props.match.url + '/:id'} component={LyricDetail}/>
+            <Route path={props.match.url + '/lyrics/:id'} component={LyricDetail}/>
         </>
     )
 };

@@ -26,10 +26,10 @@ const SearchInput = (props) => {
         };
       }, [query]);
 
-      const fetchLyricsHandler = (id) => {
-          props.history.push('/songs/' + id)
-          console.log(id)
-      }
+      // const fetchLyricsHandler = (id) => {
+      //     props.history.push('/songs/' + id)
+      //     console.log(id)
+      // }
 
     return (
         <>
@@ -40,10 +40,13 @@ const SearchInput = (props) => {
                     placeholder='song title...'
                     onChange={(e) => setQuery(e.target.value)}
                 />
-                {/* <Link to={'/songs/' + query.lyrics_id}><button>Get Track Lyrics</button></Link> */}
-                <button onClick={() => fetchLyricsHandler(query.lyrics_id)}>Get Track Lyrics</button>
+                <Link to={{
+                  pathname: '/songs/' + query.lyrics_id,
+                  lyrics:query.lyrics_body
+                }}><button>Get Track Lyrics</button></Link>
+                {/* <button onClick={() => fetchLyricsHandler(query.lyrics_id)}>Get Track Lyrics</button> */}
             </form>
-            {/* <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail}/> */}
+            <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail} />
         </>
     )
 };

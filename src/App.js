@@ -28,7 +28,7 @@ const App = () => {
   return (
     <LyricContextProvider>
       <Switch>
-        <Route path='/:id' component={LyricDetail}/>
+        <Route path='/lyrics/:id' component={LyricDetail}/>
         <Route path='/songs/:id' exact component={SearchedLyricsDetail} />
         <Route path='/' component={Main}/>
       </Switch>
