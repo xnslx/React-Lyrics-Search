@@ -19,6 +19,9 @@ const SearchInput = (props) => {
               .then(res => {
                 console.log(res);
                 setQuery(res.data.message.body.lyrics);
+              })
+              .catch(error => {
+                console.log(error)
               });
           }
         }, 1000);
