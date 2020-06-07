@@ -8,6 +8,7 @@ import LyricDetail from './LyricDetail/LyricDetail';
 import Main from './Main/Main';
 import SearchedLyricsDetail from './SearchedLyricsDetail/SearchedLyricsDetail';
 // import SearchInput from './SearchInput/SearchInput';
+import NotFoundPage from './NotFoundPage/NotFoundPage';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {faArrowRight, faArrowLeft} from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowRight, faArrowLeft);

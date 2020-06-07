@@ -7,7 +7,8 @@ import axios from 'axios';
 const SearchInput = (props) => {
     // console.log(props)
     const [query, setQuery] = useState({});
-    const inputRef = useRef()
+    const inputRef = useRef();
+    const [error, setError] = useState(false)
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -22,6 +23,7 @@ const SearchInput = (props) => {
               })
               .catch(error => {
                 console.log(error)
+                setError(true)
               });
           }
         }, 1000);
@@ -34,7 +36,6 @@ const SearchInput = (props) => {
       //     props.history.push('/songs/' + id)
       //     console.log(id)
       // }
-
     return (
         <>
             <form className={classes.Form}>
