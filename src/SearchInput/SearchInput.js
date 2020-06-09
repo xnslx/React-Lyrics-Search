@@ -2,12 +2,14 @@ import React, {useState, useEffect, useRef} from 'react';
 import {Link, Route, withRouter} from 'react-router-dom';
 import classes from './SearchInput.module.css';
 import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import axios from 'axios';
 
 const SearchInput = (props) => {
     // console.log(props)
     const [query, setQuery] = useState({});
     const inputRef = useRef();
+    const isMounted = useRef(true)
     const [error, setError] = useState(false)
 
     useEffect(() => {
@@ -26,9 +28,10 @@ const SearchInput = (props) => {
                 setError(true)
               });
           }
-        }, 1000);
+        }, 500);
         return () => {
           clearTimeout(timer);
+          isMounted.current = false;
         };
       }, [query]);
 
@@ -36,7 +39,6 @@ const SearchInput = (props) => {
       //     props.history.push('/songs/' + id)
       //     console.log(id)
       // }
-    
     return (
         <>
             <form className={classes.Form}>
@@ -53,7 +55,7 @@ const SearchInput = (props) => {
                 }}><button className={classes.Button}>Get Track Lyrics</button></Link>
                 {/* <button onClick={() => fetchLyricsHandler(query.lyrics_id)}>Get Track Lyrics</button> */}
             </form>
-            <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail} />
+            {/* <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail} /> */}
         </>
     )
 };
