@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const LyricList = (props) => {
     // console.log(props)
     const lyricList = useContext(LyricContext)
-    // console.log(lyricList)
+    console.log(lyricList)
 
     return (
         <>

@@ -1,8 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {Link, Route, withRouter} from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import classes from './SearchInput.module.css';
-import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
-import NotFoundPage from '../NotFoundPage/NotFoundPage';
+// import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
+// import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import axios from 'axios';
 
 const SearchInput = (props) => {
@@ -33,7 +33,7 @@ const SearchInput = (props) => {
           clearTimeout(timer);
           isMounted.current = false;
         };
-      }, [query]);
+      }, [query, error]);
 
       // const fetchLyricsHandler = (id) => {
       //     props.history.push('/songs/' + id)
