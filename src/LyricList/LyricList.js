@@ -1,20 +1,19 @@
 import React, {useContext} from 'react';
 import {LyricContext} from '../Context/Context';
 import classes from './LyricList.module.css';
-// import axios from 'axios';
 import {Link, Route, withRouter} from 'react-router-dom';
 import LyricDetail from '../LyricDetail/LyricDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const LyricList = (props) => {
     // console.log(props)
-    const lyricList = useContext(LyricContext)
-    console.log(lyricList)
+    const { trackList } = useContext(LyricContext)
+    // console.log(trackList)
 
     return (
         <>
             <div className={classes.Container}>
-                {lyricList.lyrics.map(lyric => {
+                {trackList.map(lyric => {
                     return (
                         <div key={lyric.track.track_id} className={classes.Item}>
                             <h2 style={{fontSize:'18px', fontWeight:'300'}}>Track Name: <strong>{lyric.track.track_name}</strong></h2>

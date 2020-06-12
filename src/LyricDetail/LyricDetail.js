@@ -24,7 +24,7 @@ const LyricDetail = (props) => {
 
     return (
         <>
-            <Link to='/'><FontAwesomeIcon icon='arrow-left' className={classes.Icon}/></Link>
+            <Link to='/lyrics'><FontAwesomeIcon icon='arrow-left' className={classes.Icon}/></Link>
             <div className={classes.Container}>
                 <p>{lyricDetail.lyrics_body}</p>
             </div>

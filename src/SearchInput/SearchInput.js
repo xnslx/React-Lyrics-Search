@@ -1,63 +1,44 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import React, {useState, useRef, useContext} from 'react';
 import classes from './SearchInput.module.css';
-// import SearchedLyricsDetail from '../SearchedLyricsDetail/SearchedLyricsDetail';
-// import NotFoundPage from '../NotFoundPage/NotFoundPage';
+import {LyricContext} from '../Context/Context';
 import axios from 'axios';
 
 const SearchInput = (props) => {
     // console.log(props)
     const [query, setQuery] = useState({});
     const inputRef = useRef();
-    const isMounted = useRef(true)
-    const [error, setError] = useState(false)
+    const [setError] = useState(false);
+    const { setTrackList } = useContext(LyricContext);
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          if (query === inputRef.current.value) {
-            axios
-              .get(
-                `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/matcher.lyrics.get?q_track=${query}&apikey=2fb0796550ae4d881460ef2cbd2f61bc`
-              )
-              .then(res => {
-                console.log(res);
-                setQuery(res.data.message.body.lyrics);
-              })
-              .catch(error => {
-                console.log(error)
-                setError(true)
-              });
-          }
-        }, 500);
-        return () => {
-          clearTimeout(timer);
-          isMounted.current = false;
-        };
-      }, [query, error]);
-
-      // const fetchLyricsHandler = (id) => {
-      //     props.history.push('/songs/' + id)
-      //     console.log(id)
-      // }
+    const fetchLyrics = e => {
+      e.preventDefault();
+      axios
+        .get(
+          `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=${query}&page_size=10&page=1&s_track_rating=desc&apikey=2fb0796550ae4d881460ef2cbd2f61bc`
+        )
+        .then(res => {
+          console.log(res);
+          setTrackList(res.data.message.body.track_list);
+        })
+        .catch(error => {
+          console.log(error);
+          setError(true);
+        });
+    };
     return (
-        <>
-            <form className={classes.Form}>
-                <input
-                    className={classes.Input}
-                    ref={inputRef}
-                    type='text' 
-                    placeholder='song title...'
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <Link to={{
-                  pathname: '/songs/' + query.lyrics_id,
-                  lyrics:query.lyrics_body
-                }}><button className={classes.Button}>Get Track Lyrics</button></Link>
-                {/* <button onClick={() => fetchLyricsHandler(query.lyrics_id)}>Get Track Lyrics</button> */}
-            </form>
-            {/* <Route path={props.match.url + '/songs/:query.lyrics_id'} exact component={SearchedLyricsDetail} /> */}
-        </>
-    )
-};
-
-export default withRouter(SearchInput);
+      <>
+        <form className={classes.Form} onSubmit={fetchLyrics}>
+          <input
+            className={classes.Input}
+            ref={inputRef}
+            type="text"
+            placeholder="song title..."
+            onChange={e => setQuery(e.target.value)}
+          />
+          <button className={classes.Button}>Get Track Lyrics</button>
+        </form>
+      </>
+    );
+  };
+  
+  export default SearchInput;
